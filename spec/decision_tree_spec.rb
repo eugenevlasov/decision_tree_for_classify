@@ -53,20 +53,3 @@ RSpec.describe DecisionTree do
     end
   end
 end
-# begin
-#   tr = DecisionTree::Tree.new(actions)
-#   puts tr.to_hash.to_json
-#   obj = { color: 'green', location: 'unknown', type: 'martian', weight: 'light' }
-#   class_id = tr.classify(obj)
-#   puts class_id
-#   puts "Expect #{class_id} == 11"
-
-#   obj = { real: 'no', type: 'cat', name: 'Murka' }
-#   class_id = tr.classify(obj)
-#   puts class_id
-#   puts "Expect #{class_id} is []"
-# rescue DecisionTree::ClassesIncorrect => e
-#   puts e
-# rescue DecisionTree::DuplicatedClassId => e
-#   puts e
-# end
