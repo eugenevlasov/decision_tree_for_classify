@@ -75,7 +75,6 @@ module DecisionTree
 
     def add_node(rn, trn, id)
       key = trn.keys.min
-
       return Value.new(nil, nil, nil) unless key
 
       rn ||= Key.new(key, [Value.new(trn[key], nil, nil)], nil)
@@ -114,28 +113,4 @@ module DecisionTree
       h
     end
   end
-end
-
-actions = []
-actions << { id: 11, properties: { color: 'green', location: 'unknown' } }
-
-actions << { id: 12, properties: { color: 'red', real: 'no' } }
-actions << { id: 13, properties: { location: 'moscow' } }
-
-begin
-  tr = DecisionTree::Tree.new(actions)
-  puts tr.to_hash.to_json
-  obj = { color: 'green', location: 'unknown', type: 'martian', weight: 'light' }
-  class_id = tr.classify(obj)
-  puts class_id
-  puts "Expect #{class_id} == 11"
-
-  obj = { real: 'no', type: 'cat', name: 'Murka' }
-  class_id = tr.classify(obj)
-  puts class_id
-  puts "Expect #{class_id} is []"
-rescue DecisionTree::ClassesIncorrect => e
-  puts e
-rescue DecisionTree::DuplicatedClassId => e
-  puts e
 end
