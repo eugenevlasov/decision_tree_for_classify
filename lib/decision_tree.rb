@@ -22,7 +22,11 @@ module DecisionTree
     end
   end
   class Tree
-    def initialize(classes)
+    def initialize(classes = nil)
+      make(classes) if classes
+    end
+
+    def make(classes)
       @classes = classes
       @tree = Key.new(nil, [], nil)
       check_classes
