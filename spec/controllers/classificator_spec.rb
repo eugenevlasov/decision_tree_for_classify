@@ -20,10 +20,13 @@ RSpec.describe ClassificatorController, type: :controller do
                                       location: 'unknown',
                                       type: 'martian',
                                       weight: 'light' } }
-      puts response.body
       expect(response).to have_http_status(200)
       json = JSON.parse(response.body)
       expect(json['class_id']).to eq(11)
+    end
+    it 'fail without obj' do
+      get :classify
+      expect(response).to have_http_status(500)
     end
   end
 end
